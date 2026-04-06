@@ -1,0 +1,7 @@
+**/*.o
+**/*-protocol.c
+**/*-protocol.h
+**/*.orig
+**/*.rej
+**/*.save
+**/.ccls-cache
