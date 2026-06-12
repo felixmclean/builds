@@ -133,9 +133,8 @@ static const char *passwords[]      = { "env", "QT_QPA_PLATFORM=wayland", "keepa
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
 	/* modifier                  key                  function          argument */
-	{ MODKEY,		     XKB_KEY_Up,  	  spawn,	    SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send 'Volume' \"$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')\"") },
-	{ MODKEY,		     XKB_KEY_Down,	  spawn, 	    SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && notify-send 'Volume' \"$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')\"") },
-
+	{ MODKEY,		     XKB_KEY_Up,  	  spawn, 	    SHCMD("~/scripts/volume-control.sh up")   },
+	{ MODKEY, 		     XKB_KEY_Down,	  spawn, 	    SHCMD("~/scripts/volume-control.sh down") },
 	{ MODKEY, 		     XKB_KEY_v, 	  spawn,	    SHCMD("~/scripts/audio-switch.sh") },
 	{ 0, 			     XKB_KEY_Print,	  spawn, 	    SHCMD("grim -g \"$(slurp)\" - | wl-copy") },
 	{ MODKEY, 		     XKB_KEY_Print, 	  spawn, 	    SHCMD("grim -g \"$(slurp)\" ~/Pictures/$(date +%Y-%m-%d-%s).png") },
