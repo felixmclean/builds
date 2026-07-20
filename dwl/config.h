@@ -31,6 +31,7 @@ static const Rule rules[] = {
 	{ "imv",     	      		NULL,       0,            1,           -1 },  /* Start floating */
 	{ "mpv",     	      		NULL,       0,            1,           -1 },  /* Start floating */
 	{ "org.keepassxc.KeePassXC",  	NULL,       1 << 5,       0,           -1 },  /* Start on tag 6 */
+	{ "foot",                       "qalc",     0,            1,           -1 },  /* qalc floating */
     	/* at least one rule must always exist */
 };
 
@@ -121,7 +122,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *menucmd[]        = { "/home/felix/scripts/wmenu-calc", NULL};
+static const char *menucmd[]        = { "wmenu-run", "-f", "DejaVu Sans Bold 16", NULL};
 static const char *termcmd[]        = { "foot", NULL };
 static const char *browser[]        = { "helium-browser", NULL };
 static const char *obsidian[] 	    = { "obsidian", NULL };
@@ -135,12 +136,15 @@ static const Key keys[] = {
 	/* modifier                  key                  function          argument */
 	{ MODKEY,		     XKB_KEY_Up,  	  spawn, 	    SHCMD("~/scripts/volume-control.sh up")   },
 	{ MODKEY, 		     XKB_KEY_Down,	  spawn, 	    SHCMD("~/scripts/volume-control.sh down") },
+	{ 0,		XKB_KEY_XF86MonBrightnessUp,	  spawn,            SHCMD("~/scripts/brightness-control.sh up")   },
+	{ 0, 		XKB_KEY_XF86MonBrightnessDown,	  spawn,  	    SHCMD("~/scripts/brightness-control.sh down") },
 	{ MODKEY, 		     XKB_KEY_v, 	  spawn,	    SHCMD("~/scripts/audio-switch.sh") },
 	{ 0, 			     XKB_KEY_Print,	  spawn, 	    SHCMD("grim -g \"$(slurp)\" - | wl-copy") },
 	{ MODKEY, 		     XKB_KEY_Print, 	  spawn, 	    SHCMD("grim -g \"$(slurp)\" ~/Pictures/$(date +%Y-%m-%d-%s).png") },
 	{ MODKEY,		     XKB_KEY_r,           spawn,            SHCMD("~/scripts/desktop-record.sh") },
 	{ MODKEY,		     XKB_KEY_l, 	  spawn,	    SHCMD("swaylock -c 000000") },
 	{ MODKEY,		     XKB_KEY_n,		  spawn,	    SHCMD("foot nvim") },
+	{ MODKEY,                    XKB_KEY_c,           spawn,            SHCMD("foot -T qalc -- qalc") },
 
 	{ MODKEY,                    XKB_KEY_space,       spawn,            {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,      spawn,            {.v = termcmd} },
