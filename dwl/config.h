@@ -140,7 +140,7 @@ static const Key keys[] = {
 	{ 0, 		XKB_KEY_XF86MonBrightnessDown,	  spawn,  	    SHCMD("~/scripts/brightness-control.sh down") },
 	{ MODKEY, 		     XKB_KEY_v, 	  spawn,	    SHCMD("~/scripts/audio-switch.sh") },
 	{ 0, 			     XKB_KEY_Print,	  spawn, 	    SHCMD("grim -g \"$(slurp)\" - | wl-copy") },
-	{ MODKEY, 		     XKB_KEY_Print, 	  spawn, 	    SHCMD("grim -g \"$(slurp)\" ~/Pictures/$(date +%Y-%m-%d-%s).png") },
+	{ MODKEY, 		     XKB_KEY_Print, 	  spawn, 	    SHCMD("grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +%Y-%m-%d-%s).png") },
 	{ MODKEY,		     XKB_KEY_r,           spawn,            SHCMD("~/scripts/desktop-record.sh") },
 	{ MODKEY,		     XKB_KEY_l, 	  spawn,	    SHCMD("swaylock -c 000000") },
 	{ MODKEY,		     XKB_KEY_n,		  spawn,	    SHCMD("foot nvim") },
